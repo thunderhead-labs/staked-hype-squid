@@ -32,15 +32,20 @@ export const processor = new EvmBatchProcessor()
         },
     })
     .setBlockRange({
-        from: 8412669,
-        to: 9098305
+        // from: 8412669,
+        // to: 9098305
+        from: 9638858,
+        to: 9714899
     })
     .includeAllBlocks({
-        from: 8412669,
-        to: 9098305
+        // from: 8412669,
+        // to: 9098305
+        from: 9638858,
+        to: 9714899
     })
     .addTransaction({
-        to: ['0xD53902aDB00ae787fD7d63c97F6213327c0fC38A'],
+        to: ['0x8b14D287B4150Ff22Ac73DF8BE720e933f659abc'],
+        //to: ['0xD53902aDB00ae787fD7d63c97F6213327c0fC38A'],
         // traces: true,
         // logs: true,
     })
