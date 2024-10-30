@@ -1,9 +1,11 @@
 import { TypeormDatabase } from '@subsquid/typeorm-store'
-import { Burn } from './model'
+import { Burn, Mint } from './model'
 import { processor } from './processor'
 
 processor.run(new TypeormDatabase({ supportHotBlocks: true }), async (ctx) => {
-    const burns: Burn[] = []
+    //const burns: Burn[] = []
+    const mints: Mint[] = []
+
     ctx.log.info(`Blocks: ${ctx.blocks.length}`)
     for (let c of ctx.blocks) {
         ctx.log.info(`Transactions: ${c.transactions.length}`)
@@ -18,14 +20,26 @@ processor.run(new TypeormDatabase({ supportHotBlocks: true }), async (ctx) => {
             //         txHash: tx.hash,
             //     })
             // )
+            mints.push(
+                new Mint({
+                    id: tx.id,
+                    block: c.header.height,
+                    address: tx.to,
+                    value: tx.value,
+                    txHash: tx.hash,
+                })
+            )
         }
     }
     // apply vectorized transformations and aggregations
     // const burned = burns.reduce((acc, b) => acc + b.value, 0n) / 1_000_000_000n
-    // const startBlock = ctx.blocks.at(0)?.header.height
-    // const endBlock = ctx.blocks.at(-1)?.header.height
+    const startBlock = ctx.blocks.at(0)?.header.height
+    const endBlock = ctx.blocks.at(-1)?.header.height
     //ctx.log.info(`Burned ${burned} Gwei from ${startBlock} to ${endBlock}`)
 
+    const minted = mints.reduce((acc, m) => acc + m.value, 0n) / 1_000_000_000n
+    ctx.log.info(`Mints ${minted} from ${startBlock} to ${endBlock}`)
+
     // upsert batches of entities with batch-optimized ctx.store.insert()/upsert()
-    // await ctx.store.insert(burns)
+    await ctx.store.insert(mints)
 })
