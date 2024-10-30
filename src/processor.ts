@@ -26,16 +26,17 @@ export const processor = new EvmBatchProcessor()
     .setFields({
         transaction: {
             from: true,
+            to: true,
             value: true,
             hash: true,
         },
     })
     .setBlockRange({
-        from: 8413669,
-        // to: 8729516
+        from: 8412669,
+        to: 8719516
     })
     .addTransaction({
-        to: ['0x8a9c7c4974B9ec87c7058FE0e205933D323E485a'],
+        to: ['0xD53902aDB00ae787fD7d63c97F6213327c0fC38A'],
     })
 
 export type Fields = EvmBatchProcessorFields<typeof processor>
