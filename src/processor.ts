@@ -22,7 +22,7 @@ export const processor = new EvmBatchProcessor()
         // More RPC connection options at https://docs.subsquid.io/evm-indexing/configuration/initialization/#set-data-source
         rateLimit: 10
     })
-    .setFinalityConfirmation(75)
+    .setFinalityConfirmation(10)
     .setFields({
         transaction: {
             from: true,
