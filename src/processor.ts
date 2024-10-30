@@ -20,7 +20,7 @@ export const processor = new EvmBatchProcessor()
         // https://docs.subsquid.io/deploy-squid/env-variables/
         url: assertNotNull(process.env.RPC_ETH_HTTP, 'No RPC endpoint supplied'),
         // More RPC connection options at https://docs.subsquid.io/evm-indexing/configuration/initialization/#set-data-source
-        rateLimit: 100
+        rateLimit: 25
     })
     .setFinalityConfirmation(10)
     .setFields({
