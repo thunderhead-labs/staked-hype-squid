@@ -37,6 +37,8 @@ export const processor = new EvmBatchProcessor()
     })
     .addTransaction({
         to: ['0xD53902aDB00ae787fD7d63c97F6213327c0fC38A'],
+        traces: true,
+        logs: true,
     })
 
 export type Fields = EvmBatchProcessorFields<typeof processor>
