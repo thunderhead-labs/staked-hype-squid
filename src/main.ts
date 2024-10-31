@@ -1,5 +1,5 @@
 import { TypeormDatabase } from '@subsquid/typeorm-store'
-import { Burn, Mint } from './model'
+import { Mint } from './model'
 import { processor } from './processor'
 
 processor.run(new TypeormDatabase({ supportHotBlocks: true }), async (ctx) => {
@@ -27,7 +27,7 @@ processor.run(new TypeormDatabase({ supportHotBlocks: true }), async (ctx) => {
                     address: tx.to,
                     value: tx.value,
                     txHash: tx.hash,
-                    //from: tx.from,
+                    from: tx.from,
                 })
             )
         }
