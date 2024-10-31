@@ -20,7 +20,4 @@ export class Mint {
 
     @StringColumn_({nullable: false})
     txHash!: string
-
-    @StringColumn_({nullable: false})
-    from!: string
 }
