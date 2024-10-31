@@ -32,13 +32,13 @@ export const processor = new EvmBatchProcessor()
         },
     })
     .setBlockRange({
-        from: 8413669,
+        from: 1000000,
         to: 9715223
         // from: 9638858,
         // to: 9714899
     })
     .includeAllBlocks({
-        from: 8413669,
+        from: 1000000,
         to: 9715223
         // from: 9638858,
         // to: 9714899
