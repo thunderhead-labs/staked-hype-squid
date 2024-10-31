@@ -29,6 +29,7 @@ export const processor = new EvmBatchProcessor()
             to: true,
             value: true,
             hash: true,
+            block: true,
         },
     })
     .setBlockRange({
