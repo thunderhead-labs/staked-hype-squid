@@ -9,7 +9,8 @@ type Burn @entity {
 type Mint @entity {
   id: ID!
   block: Int!
-  address: String! @index
+  address: String!
   value: BigInt!
   txHash: String!
+  from: String!
 }

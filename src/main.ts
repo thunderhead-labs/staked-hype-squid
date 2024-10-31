@@ -27,6 +27,7 @@ processor.run(new TypeormDatabase({ supportHotBlocks: true }), async (ctx) => {
                     address: tx.to,
                     value: tx.value,
                     txHash: tx.hash,
+                    from: tx.from,
                 })
             )
         }
